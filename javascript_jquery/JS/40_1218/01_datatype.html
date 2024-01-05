@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>01데이터의 유형(data type)</title>
+    <style>
+    body {width:1000px; white-space: pre-line; margin: 0px auto;}
+    .hright {background-color: aquamarine; width: 600px; font: 600; color: coral;}
+    pre {line-height: 26px; font-weight: 700; font-size: 18px; border: 1px solid cornflowerblue; white-space: pre-line; width: 800px;
+    background-color: rgba(255,255,200,1);}
+    .span01 {font-size: 18px; background-color: rgba(0,30,20,0.8); color:chartreuse;}
+    .span02 {font-size: 18px; background-color: #930413; color:bisque; font-size: 21px;}
+    div {font-size: 19px; background-color:cornflowerblue; display: inline; color: cornsilk;}
+    .bor1{border:2px solid cornflowerblue;}
+    ul{list-style: none;}
+    h2{font-weight: 700;}
+
+    </style>
+</head>
+<body>
+    <pre>
+        <h2 class="hright">01데이터의 유형(data type)</h2>
+        자바스크립트에서 사용하는 데이터의 유형에 대해 알아본다. 
+        <ul>
+            <li><span class="span01">문자데이터형(string)</span>
+                
+                <span class="span02">
+                    typeof - typeof연산자는 사용자가 입력한 데이터가 어떤 종류의 형식인지를 알려주는 연산자이며, 변수앞에 Number, String등을 작성하면 실제 데이터 형식을 알 수 있다.
+                </span>
+            </li>
+            
+            <li><span class="span01">숫자데이터형(number)</span></li>
+            <li><span class="span01">부울형(boolean) - true(확인), false(취소)</span></li>
+            <li><span class="span01">찾을 수 없는 데이터형(undefined)</span></li>
+            <li><span class="span01">값이 없는 데이터(null)</span></li>
+            <li><span class="span01">배열형 데이터</span></li>
+            <li><span class="span01">함수형 데이터</span></li>
+            <li><span class="span01">객체(object) - document, window, alert, confirm,</span></li>
+        </ul>
+            typeof - typeof연산자는 사용자가 입력한 데이터가 어떤 종류의 형식인지를 알려주는 연산자이며, 변수앞에 numberm string등을 작성하면 실제 데이터 형 식을 알 수 있다. 
+
+            es6문법에서 새롭게 추가된 기호 => 템플릿 리터럴(`): 연산자를 사용하지 않아도 간단한 방법으로 새로운 문자열을 삽입할 수 있는 기능을 제공한다. 이를 문자열 인터폴레이션(string interpolation)이라 한다.
+        <script>
+            //1. 원시형(기본형)데이터
+            let a = 10; //숫자데이터(;)
+            let b = '10'; //문자데이터('';)
+            let c = true; //부울형 데이터
+            let n1; // 값이 정의되지 않음 (=undefined)
+            let n2 = null; // 값이 없다(변수는 필요하지만 값이 아직 결정된게 없다.)
+
+            document.write(a+'<br>')
+            document.write(b+'<br>') 
+            document.write(c+'<br>');
+            document.write(n1+'<br>');
+            document.write(n2+'<br>');
+            // 5개 원시형 데이터(최초로 만들어진 데이터)
+
+            // typeof : 문자인지 숫자인지 확인해주는 명령어
+
+            document.write('변수 a의 데이터형식은' + typeof a+'입니다.<br>');
+            document.write('변수 a의 데이터형식은' + typeof b+'입니다.<br>');
+
+            //2. 참조형데이터 - 여러개의 데이터를 한꺼번에 담을 수 있다. (배열, array)
+            let array1 = ['일', '월', '화', '수', '목', '금', '토']; // array는 값을 대가로 안에 쓴다
+            document.write(array1+'<br>'); //배열데이터 전부출력
+            document.write(array1[1]+'<br>'); //배열데이터에 인덱스번호 입력하면 해당데이터 출력 데이터는 0부터 시작한다 0(일), 1(월), 2(화), 3(수),....
+
+            let fruits = ['사과', '배', '감', '귤', '포도', '오렌지', '수박'];
+            document.write('제가 좋아하는 과일은' +fruits[0]+'입니다.<br>');
+
+            let info = ['jeon', '홍길동', '서울시 종로구 구기동', '00-222-1111', '30', '남'];
+            document.write('나의 이름은 ' +info[1]+'이고, 나이는 '+info[4]+'세이며, 아이디는 '+info[0]+', 사는곳은 '+info[2]+'입니다.');
+
+            //3. 함수형데이터 (function)
+            function sam(){
+                document.write('<p>함수형 데이터입니다.</p>');} 
+            //함수는 사용자가 만들어놓고 필요할때 호출할때까지는 출력되지않는다.
+
+            sam(); //호출하기
+
+            //4. 객체
+            // 사용자 정의 객체
+            let person = {
+                'age':'21',
+                'name':'강감찬',
+                'job':'웹퍼블리셔',
+                'height':'175'
+            }
+
+
+            //객체내용 출력하기
+            document.write(person.age); //나이
+            document.write(person.name); //이름
+            document.write(person.job); //직업
+            document.write(person.height); //키
+            document.write('<hr>');
+            // 나의 이름은 '강감찬'이고, 나이는 21세이며, 키는 175, 직업은 '웹퍼블리셔'입니다.
+            // `(백틱문자) es6문법에서 새로 추가된 기호로서 템플릿리터럴(`)이라고 함. 대신 변수는 달러로 묶어줘야함
+            document.write(`나의 이름은 ${person.name}이고, 나이는 ${person.age}이며, 키는 ${person.height}cm이고, 직업은${person.job}입니다.`);
+
+            document.write('document 내장객체<hr>');
+            window.alert('window 내장객체');
+
+            
+            
+
+            
+            
+        
+        </script>
+
+    </pre>
+    
+    
+</body>
+</html>

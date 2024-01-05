@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>자바스크립트기초_내장객체_문서객체(document)</title>
+    <style>
+        body {width:1000px; white-space: pre-line; margin: 0px auto;}
+        .hright {background-color: aquamarine; width: 100%; font: 600; color: coral;}
+        pre {line-height: 26px; font-weight: 700; font-size: 18px; border: 1px solid cornflowerblue; white-space: pre-line; width: 800px;
+        background-color: rgba(255,255,200,1);}
+        .span01 {font-size: 18px; background-color: rgba(0,30,20,0.8); color:chartreuse;}
+        .span02 {font-size: 18px; background-color: #930413; color:bisque; font-size: 21px;}
+        div {font-size: 19px; background-color:cornflowerblue; display: inline; color: cornsilk;}
+        .bor1{border:2px solid cornflowerblue;}
+        img{width:700px;}
+
+        .txt01{font-weight: bold; color:#930413;}
+
+        
+    </style>
+</head>
+<body>
+    <pre>
+        <h2 class="hright">자바스크립트기초_내장객체_문서객체(document)</h2>
+    <p>DOM(document Object Model)은 넓은 의미로는 웹브라우저가 html을 인식하는 방법이고, 좁은 의미로는 웹문서안에 있는 요소(객체)들의 집합이다.</p>
+    
+    <p>웹브라우저(크롬, 사파리, 파이어폭스, 오페라, 익스플로러, edge, 모바일 브라우저)마다 <span class="span01">DOM구현이 호환되지 않아서 W3C에서 DOM에 대한 표준규칙을 작성하였다.(=문서규칙)</span></p>
+
+    <h3>1. DOM tree구조의 이해</h3>
+    <p>DOM은 노드(node)들의 집합이라고 할 수 있으며, DOM의 노드에는 요소노드(ex. <span class="span01">img</span> src="주소"), 속성노드(ex. img <span class="span01">src</span>="주소"), 텍스트노드(ex. img src=<span class="span01">"주소"</span>)로 구성되어 있다. 노드는 DOM의 구조를 이루는 최소단위이며, 이 노드들의 집합체가 DOM이라고 할 수 있다.</p>
+    <p>노트(node) = 태그의집합(HTML, CSS, Javascript)</p>
+    </pre>
+
+    <pre>
+        <h3 class="hright">2. DOM을 구성하는 기본원칙</h3>
+        <ul>
+            <li>모든 html태그는 = 요소(element)노드이다</li>
+            <li>html태그에서 사용하는 택스트 내용은 자식 노드인 텍스트(text) 노드이다.</li>
+            <li>html태그에 있는 속성은 자식노드인 속성노드이다.</li>
+            <li>주석은 주석(comment)노트이다</li>
+        </ul>
+
+        <img src="./DOM/dom1.jpg" alt="">
+        <img src="./DOM/dom2.jpg" alt="">
+        <img src="./DOM/dom3.jpg" alt="">
+        <img src="./DOM/dom4.jpg" alt="">
+
+        html : 팀버너스리 박사
+        CSS : 에린메이 / 하콤 비움 리?
+        JS : 브렌던 아이크
+        > 개발자가 달라 언어도다름
+    </pre>
+
+    <pre>
+        <h3 class="hright">3. document 객체의 메소드</h3>
+        <ul>
+            <li>open() - 데이터를 보낼 준비</li>
+            <li>close() - 문서에 데이터 출력을 마무리함</li>
+            <li>clear() - 브라우저에서 문서를 지움</li>
+            <li>write() - 문서에 데이터를 출력함</li>
+            <li>writeln() - 문서에 줄(line)바꾸기를 포함하여 데이터를 출력함.</li>
+        </ul>
+
+        <h3 class="hright">실습1. 현재 작성중인 문서의 정보 알아보기</h3>
+        <p class="span02">문서의 title정보와 url정보 출력하기</p>
+        <script>
+
+            document.write(`<p>현재 문서의 title 제목은 <span class='txt01'>document.title</span> 이고, 문서의 url주소는 <span class='txt01'>${document.URL}<span></p>`);
+        </script>
+
+        <h3 class="hright">실습2. 버튼 클릭시 문서안의 글자색, 배경색 변경하기(토글버튼 0,1) => 다크모드 버튼</h3>
+        <input type="button" value="다크모드(글자색 - 흰색 or 배경 - 진회색)" id="dark_btn">
+
+        <script>
+            //버튼 변수 선언
+            const d_btn = document.getElementById('dark_btn')
+            let n = 0; //초기값
+
+            //
+            d_btn.addEventListener('click', function(){
+                if(n==0){ 
+            //만약 사용자가 버튼을 클릭하면 변수값과 비교하여 n값이 0과 같다면 아래내용 실행
+                    document.bgColor='#333'; //배경색 변경
+                    document.fgColor='#fff'; //글자색 변경
+                    n=1;//다시 1을 넣어둠
+                }
+                else{ // 그렇지 않다면
+                    document.bgColor='#fff'; //배경색 원래대로
+                    document.fgColor='#000'; //글자색 원래대로
+                    n=0; //변수에 0을 미리 넣어둠.
+                }
+
+            });
+        </script>
+
+        <h3 class="hright">실습3. 버튼 클릭시 h3태그만 선택하여 글자색 '빨강'으로 변경하기</h3>
+
+        <input type="button" value="버튼 클릭시 h3에 서식 변경하기" id="h3_btn">
+
+        <h3 class="hright">실습4. 버튼 클릭시 li태그만 선택하여 글자색 '파랑'으로 변경하기</h3>
+        <input type="button" value="버튼 클릭시 li태그에 서식변경하기" id="li_btn">
+        <script>
+            //버튼 변수 선언
+            const h3_btn = document.getElementById('h3_btn');
+            const li_btn = document.getElementById('li_btn');
+
+            //버튼 클릭시 해당 내용실행
+            h3_btn.addEventListener('click', function(){
+
+                const title03 = document.getElementByTagName('h3');
+
+                //반복문을 통해 h3의 개수만큼 반복하여 서식을 적용한다.
+                for(let i=0;i<=title03.length;i++){
+                console.log(i);
+                title03[i].style.color='#930413';}
+                //fgColor는 document객체의 속성으로 사용
+                //일반 문서안의 글자색상을 변경하고자 할 때는 style.color를 사용한다.
+                });
+
+        
+            li_btn.addEventListener('click', function(){
+                const list01 = document.getElementByTagName('li');
+
+                for(let j=0;j<=li.length;j++){
+            li[j].style.color="#00f";
+            li[j].style.bgColor="#ff0";}
+
+            });
+        </script>
+        <li>dkddk</li>
+        
+
+
+
+    </pre>
+    
+</body>
+</html>

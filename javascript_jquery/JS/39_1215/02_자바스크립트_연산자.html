@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=
+    , initial-scale=1.0">
+    <title>02_자바스크립트_연산자</title>
+    <style>
+        body {width:1000px; white-space: pre-line; margin: 0px auto;}
+    .hright {background-color: aquamarine; width: 600px; font: 600; color: coral;}
+    pre {line-height: 26px; font-weight: 700; font-size: 18px; border: 1px solid cornflowerblue; white-space: pre-line; width: 800px;
+    background-color: rgba(255,255,200,1);}
+    .span01 {font-size: 18px; background-color: rgba(0,30,20,0.8); color:chartreuse;}
+    .span02 {font-size: 18px; background-color: #930413; color:bisque; font-size: 21px;}
+    div {font-size: 19px; background-color:cornflowerblue; display: inline; color: cornsilk;}
+    .bor1{border:2px solid cornflowerblue;}
+    ul{list-style: none;}
+    h2{font-weight: 700;}
+    </style>
+</head>
+<body>
+    <pre>
+        <h2 class="hright">02_자바스크립트_연산자</h2>
+        자바스크립트 연산자는 사용자가 조건식을 만들어서 원하는 결과를 출력하고자 할 때 사용하는 기호이다. 
+        
+        <div>1.산술연산자</div> : +, -, *, /, %(나머지값 )
+        <!-- <script>
+            let a = 10; let b = 5; 
+            let c = prompt('숫자를 입력하세요.');
+            document.write(a+b+'<br>'); 
+            document.write(a*b+'<br>');document.write(a%b+'<br>');
+
+            // c값 %2해서 나머지값 0일때 짝수다 / 0아닐때 홀수다
+            if(c%2==0){
+                document.write('<p>입력하신 숫자는 짝수입니다.</p>');}
+            else{
+                document.write('<p>입력하신 숫자는 홀수입니다.</p>');
+            }
+        </script> -->
+        <hr>
+        <div>2.문자열 결합연산자</div> : +(문자+문자, 문자+숫자 결합시 사용)
+        <!-- <script>
+            let name, region;
+            name = '홍길동'; region ='서울';
+            document.write(name+'이(가) 사는 지역은'+ region+'입니다.')
+        </script> -->
+        <hr>
+
+        <div>비교연산자</div> : 
+        >, <, =>, <=, <span class=span01>==(true check)</span>, ===
+        <span class="span02">ex) 홈페이지 스크롤 내릴때 사진이 바뀌는것 </span>
+        <span class="span01">화면스크롤값 scroll 변수선언 : let scroll; scroll>=300</span>
+        <!-- <script>
+            let a = 10; let b = 5; 
+            
+            // let res = a > b; 
+            // document.write(res); 
+            // 10<5보다 크기때문에 ture출력
+
+            // let res = a < b;
+            // document.write('<br>'+res); 
+            //10<5보다 크기때문에 false값 출력
+
+            // let res= a==b;
+            // document.write('<br>'+res); 
+            // //a(10)==b(5) 데이터값 같지않아 false출력
+            
+        </script> -->
+        <hr>
+        대입연산자 : =, +=, -=
+        <span class="span01">= : ex) a=b a를 b에 대입한다</span>
+        <!-- <script>
+            let a= 500; let b= 501; 
+            res= b=a; 
+            document.write('<br>'+res); //500 
+        </script> -->
+        <hr>
+        증감연산자 : <span class=span01>++</span>(1씩 증가), <span class=span01>--</span>(1씩 감소)
+        <!-- <script>
+            // ++(1씩 변수값에 더한다) --(1씩 변수값에 뺀다.)
+            res = a++; //변수명 a값을 출력하고 a의 뒤에 1을 증가한다는 뜻
+            document.write('<br>'+res); //5+1=6
+            res = ++a;
+            document.wirte('<br>'+res); //6(위수식에서 6이저장됨)+1=7
+
+        </script> -->
+        <hr>
+        논리연산자 : <span class=span01>&&(and)</span>, <span class="span01">||(or)</span>, <span class="span01">!(not)</span>
+        <!-- <script>
+            // alert((1>2)&&(1<2)); 
+            // 1조건과 2조건 모두 만족하지 않기 때문에 false
+
+            // alert((1>2)||(1<2));
+            //1조건과 2조건 둘중에 하나만 만족하면 true
+        </script> -->
+        <hr>
+
+        삼항조건연산자 : 조건식 조건이 맞을때 <span class="span01">출력값 1(true)</span>: 조건이 맞지 않을때 <span class="span01">출력값 2(false)</span>
+        <div>조건식?실행문1:실행문2;</div>
+        <script>
+            let jumse = prompt('점수를 입력하세요');
+
+            jumsu > 60?alert('합격'):alert('불합격');
+
+            //해석1
+            // ((id =='master'||id=='abcd'||id=='naver'))&&(pw=='1234')?alert('인증완료'):alert('인증실패');
+
+            // jumsu ?60<alert('합격'):alert('불합격');
+
+            // let a=200;
+            // let b=100;
+            // a>b?printf('a가큼'):printf('b가큼')
+        </script>
+        <hr>
+        타입연산자 : <span class="span01">typeof</span>(데이터 타입을 구분하고 형식을 알려줌)
+        <!-- <script>
+            let jumse = prompt('점수를 입력하세요');
+            jumsu > 60?alert('합격'):alert('불합격');
+            document.write('변수 jumsu의 타입은' +typeof(jumsu) + '입니다.');
+        </script> -->
+        <hr>
+
+        실습예제
+        1. 사용자가 입력한 아이디가 'master', 'abcd', 'naver'중 하나만 입력해도 인증이 되며, 패스워드는 '1,2,3,4'일때 인증이 되도록 결과값이 나오도록 함 
+        2. 결과값 '인증완료', '인증실패 다시시도하세요'
+        조건식?인증완료:인증실패
+        
+        <script>
+            // let id =prompt('id를 입력하세요');
+            // let pw =prompt('pw를 입력하세요');
+            // id = 'master', 'abcd', 'naver';
+            // pw = '1','2','3','4';
+            // id == (master)||(abcd)||(naver)?alert('인증되었습니다'):alert('다시입력하세요');
+            // let jumse = prompt('점수를 입력하세요');
+            // document.write(master||abcd||naver?alert('인증되었습니다'):alert('다시입력하세요');)
+            
+
+
+            //1조건과 2조건 둘중에 하나만 만족하면 true
+            
+            // let id =prompt('id입력하세요');
+            // let pw =prompt('password 입력하세요');
+            
+            //해석1
+            // ((id =='master'||id=='abcd'||id=='naver'))&&(pw=='1234')?alert('인증완료'):alert('인증실패');
+
+            //해석2
+            // let join=(id=='master'||id=='abcd'||id=='naver')&&(pw=='1234');
+            // let result= join?alert('인증완료'):alert('인증실패');
+
+            //풀이 ||를쓰고 id==를 넣지않으면 적용이안됨
+            
+
+            
+
+            
+            
+
+            
+        </script>
+    </pre>
+
+    
+    
+    
+    
+</body>
+</html>

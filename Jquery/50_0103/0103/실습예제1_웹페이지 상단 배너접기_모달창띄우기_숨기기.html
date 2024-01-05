@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>실습예제1_웹페이지 상단 배너접기_모달창띄우기_숨기기</title>
+  <style>
+    *{margin:0px;padding:0px;}
+    .banner, .wrap{
+      width:1034px;
+      margin:0px auto;
+    }
+  </style>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+  <script>
+    $(document).ready(function(){
+      //닫기 버튼 변수
+      const cbtn = $('.banner #c_btn');
+
+      cbtn.click(function(){
+        $('.banner').slideUp();
+        // $('.banner').hide();
+      });
+    });
+  </script>
+</head>
+<body>
+  <div class="banner">
+    <a href="#" title="배너"><img src="./images/main01_01.jpg" alt="배너"></a>
+    <input type="button" value="닫기" id="c_btn">
+  </div>
+  <div class="wrap">
+    <img src="./images/main01_02.jpg" alt="메인">
+  </div>
+</body>
+</html>

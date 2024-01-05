@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>01_자바스크립트 소개와 기초문법</title>
+    <style>
+        .hright{background-color: aquamarine; width:600px; font: 600; color:coral;}
+        pre{line-height: 26px; font-weight: 700; font-size:18px;}
+        span{font-size: 16px; background-color:chartreuse;}
+        div{font-size: 19px; background-color:cornflowerblue; display: inline; color:cornsilk}
+
+        .p01{background: #ff0;color:#f00;}
+        .ul_bor1{border:2px solid cornflowerblue;}
+    </style>
+
+    <!-- 내부 스크립트 -->
+    <script>
+        document.write('<p class="p01">document객체를 사용하여 문서내용 출력하기</p>');
+    </script>
+</head>
+<body>
+    <h2 class="hright">자바스크립트 소개와 기초문법</h2>
+    
+    <ul class="ul_bor1">
+        <script>document.write('<p class="p01">개념</p>');</script>
+        <li>자바스크립트는 <span>html문서안에서 동작되는 언어</span>이다.</li>
+        <li>자바스크립트는 <span>모든 명령어가 객체로 이루어진 언어</span>이다.</li>
+        <li>html문서의 <span>head, body영역에 작성</span>한다.</li>
+        <li>'<span>script</span>'로 시작하여 '<span>/script</span>'로 닫아준다.</li>
+        <li>개발자모드-콘솔에서 미리테스트하고 코드작성한다</li>
+        <script>document.write('<p class="p01">주석</p>');</script>
+        <li>자바스크립트는 주석을 작성할 때 2가지 종류가 있다.<br>
+            <span>한줄주석</span> :  '<span>//주석내용</span>' <span>두줄이상</span>주석 : '<span>/* 주석내용 */</span>'</li>
+        <script>document.write('<p class="p01">성격</p>');</script>
+        <li>html, css는 대소문자를 구별 안하지만, <span>자바스크립트는 대, 소문자를 구별</span>한다.</li>
+        <li>자바스크립트에서 <span>문자데이터를 입력하고자 할 때</span>는 <span>''</span>(홀따음표, <span>싱글쿼테이션</span>), <br>
+        <span>""</span>(쌍따옴표, <span>더블쿼테이션</span>) <span>기호를 사용</span>한다.</li>
+        <li>자바스크립트는 <span>css언어와 같이 내부스크립트, 외부스크립트가 있다</span>.</li>
+        <li>자바스크립트의 문서<span>확장자는 '파일명.js'</span>로 끝난다.</li>
+        <!-- 내부 스크립트 (어디든지, 문서의 뒤쪽에도 사용가능)-->
+        <script>
+            document.write('<p class="p01">document객체를 사용하여 문서내용 출력하기</p>');
+        </script>
+    </ul>
+    
+</body>
+</html>

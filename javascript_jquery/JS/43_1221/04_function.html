@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>01_함수복습_원하는 숫자까지의 합계를 출력</title>
+    <style>
+        body {width:1000px; white-space: pre-line; margin: 0px auto;}
+        .hright {background-color: aquamarine; width: 600px; font: 600; color: coral;}
+        pre {line-height: 26px; font-weight: 700; font-size: 18px; border: 1px solid cornflowerblue; white-space: pre-line; width: 800px;
+        background-color: rgba(255,255,200,1);}
+        .span01 {font-size: 18px; background-color: rgba(0,30,20,0.8); color:chartreuse;}
+        .span02 {font-size: 18px; background-color: #930413; color:bisque; font-size: 21px;}
+        div {font-size: 19px; background-color:cornflowerblue; display: inline; color: cornsilk;}
+        .bor1{border:2px solid cornflowerblue;}
+
+        label{
+    display:inline-block;
+    width:180px;
+    font-weight:bold;
+    }
+    input{
+    height:30px;border:none;
+    background:#ccc;
+    }
+    </style>
+</head>
+<body>
+    <pre>
+        <h2>01_함수복습_원하는 숫자까지의 합계를 출력</h2>
+
+        사용자가 명령프롬프트를 이용하여 숫자를 입력하면 1부터 해당하는 숫자까지 합계를 출력해주는 함수를 작성하여 출력해본다. 
+
+        <p>
+            <label for='number'>합계를 구할 숫자입력 : </label>
+            <input type="text" id="number">
+        </p>
+        <p>
+            <label for="result">합계결과 : </label>
+            <input type="text" id="result">
+        </p>
+        
+        <p>
+            <input type="button" id="res_btn" value="합계보기">
+        </p>
+    </pre>
+    <script>
+        //1. 변수선언
+        let n;
+        let res_b = document.getElementById('res_btn');
+
+        //2. 버튼을 클릭하면 해당함수가 실행되게 함.
+        res_b.addEventListener('click',sum);
+
+        //3. 합계를 구해주는  함수
+        function sum(){
+
+            
+            n = document.getElementById('number').value;
+            // 넘버값을 벨류에 담에 n에 출력한다.
+            console.log(n);
+            // console.log('adsfadfadfa');
+            
+            s = 0;
+            //반복문만들기 1부터 n까지 더하는 공식
+            for(let i=1; i<=n; i++){
+            // 합계(누적합계)
+            s = s + i; 
+            // 1 = 0+1
+            // 3 = 1+2
+            // 6 = 3+3
+            // 10 = 6+4
+            // 15 = 10+5
+            // i값이 n값이 될때까지 누적으로 더한다.
+            }
+            // 연산결과 출력하기 
+            // 넘버값을 벨류에 담에 s에 출력한다.
+            document.getElementById('result').value = s;
+            
+            
+        }
+        // 데이터를 입력하면 > 변수 n (let n)에 담길거다 데이터가 저장되는건 합계를 구해주는함수 n에 담기는데 사용자가 버튼을 클릭햇을때 저장이된다
+        
+    </script>
+    
+</body>
+</html>

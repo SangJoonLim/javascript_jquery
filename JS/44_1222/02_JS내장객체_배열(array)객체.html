@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JS내장객체_배열(array)객체</title>
+    <style>
+        body {width:1000px; white-space: pre-line; margin: 0px auto;}
+        .hright {background-color: aquamarine; width: 600px; font: 600; color: coral;}
+        pre {line-height: 26px; font-weight: 700; font-size: 18px; border: 1px solid cornflowerblue; white-space: pre-line; width: 600px;
+        background-color: rgba(255,255,200,1);}
+        .span01 {font-size: 18px; background-color: rgba(0,30,20,0.8); color:chartreuse;}
+        .span02 {font-size: 18px; background-color: #930413; color:bisque; font-size: 21px;}
+        div {font-size: 19px; background-color:cornflowerblue; color: cornsilk;}
+        .bor1{border:2px solid cornflowerblue;}
+
+        #fod{text-align: center; border:1px solid salmon;}
+        #coup{text-align: center; padding:15px;}
+        #coup img{width:60%;}
+        
+        
+        .imm{
+            border:1px solid #333; position:relative; width:300px; height: 300px; margin:0 auto; background-color: #930413;}
+        .imm img{ height: 100%; overflow:hidden; margin: none;}
+        .imm  i{position: absolute; display: inline-block; color:#fff; }
+        #left{top:140px; left:65px;}
+        #right{top:140px; left: 220px;float:right;}
+        #r, #l{display:none;}
+    </style>
+    <!--폰트어썸-->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+    <pre>
+        <h2 class="hright">02자바스크립트 내장객체_배열(array)객체</h2>
+        <dl>
+            <dt>배열(array)객체란?</dt>
+            <dd>연관된 데이터를 하나처럼 관리하고 싶을 때 사용</dd>
+            <dd>복수의 데이터를 제어할 수 있는 다양한 함수를 제공</dd>
+            <dd>배열의 함수를 이용한 데이터의 편리한 조작이 가능하다.</dd>
+        </dl>
+
+        <h3 class="hright">1. 배열 객체 선언하기</h3>
+        방법1. let array = new Array(data1, data2, data3, data4.....dataN);
+
+        방법2. let array = [data1, data2, data3, data4... dataN];
+
+        ex1) let fruits = new Array('수박', '참외', '귤', '감', '사과', '포도', '복숭아'...)
+        ex2) let fruits = ['수박', '참외', '귤', '감', '사과', '포도', '복숭아'...]
+
+        <h3 class="hright">2. 배열 객체 호출하기</h3>
+        배열 객체의 데이터를 호출하고자 할 때는 인덱스 번호를 사용하는데 번호는 0부터 시작한다. 
+
+        <h3>실습예제. 중화요리 음식 이미지를 사용하여 요일별 음식 추천하기</h3>
+        날짜 객체를 사용하여 현재 요일 번호를 구해서 배열번호에 맞는 이미지 파일명을 찾아 img태그에 삽입
+
+        <div id="fod">
+            
+            
+            
+        </div>
+
+        <div id="coup">
+
+
+        </div>
+
+    </pre>
+
+    <script>
+        // 배열객체 선언하기 
+        let fruits = new Array('수박', '참외', '귤', '감', '사과', '포도', '복숭아');
+
+        // 출력하기
+        document.write(fruits+'<br>');
+        document.write(fruits[0]+'<br>');
+        document.write(fruits[1]+'<br>');
+        document.write(fruits[2]+'<br>');
+
+        //방법2. 배열객체 선언하기
+        let food = ['자장면', '짬뽕', '햄버거', '돈가스', '라면', '김밥', '샐러드', '열무비빔밥', '컵밥', '닭가슴살', '쌈밥'] 
+        let r_num = Math.floor(Math.random()*11);
+        
+        document.write('<p>내가 선택한 오늘의 점심메뉴는 '+food[0]+' 입니다.</p><br>');
+        document.write('<p>JS가 추천한 오늘의 점심메뉴는 '+food[r_num]+' 입니다.</p><br>');
+        
+
+        //실습 요일별음식 
+        // 배열객체 선언하기
+        let dail = ['(일)', '(월)', '(화)', '(수)', '(목)', '(금)', '(토)']
+        // let fod = ['food1.jpg', 'food2.jpg', 'food3.jpg', 'food4.jpg', 'food5.jpg', 'food6.jpg', 'foo7.jpg']
+        let imgnum = Math.ceil(Math.random()*7);
+        // 날짜객체 생성하기
+        let today = new Date();
+
+        // 날짜출력하기
+        document.write('<p>'+today+'</p>');
+        document.write('<p>'+today.getDay()+'</p>'); //5 => 금요일을 의미함
+
+        document.write('<p>'+dail[today.getDay()]+'</p>');
+
+        document.write('<p>JS가 추천한 '+dail[today.getDay()]+'요일의 점심메뉴는 '+food[r_num]+' 입니다.</p><br>');
+
+        let d = dail[today.getDay()];
+
+        // food박스에 내용 출력하기
+        document.getElementById('fod').innerHTML='<h3>오늘'+d+'요일의 추천요리는<h3><br><img src="./1222/images/food'+imgnum+'.jpg" alt="오늘의요리">';
+
+        // 실습2 쿠팡 새로고침시 랜덤 좌우버튼 클릭시 이미지 변경
+        //객체생성
+        let prod = ['product01.png', 'product02.jpg', 'product03.jpg', 'procunt04.jpg', 'product05.jpg', 'product06.jpg', 'product07.jpg', 'product08.png', 'product09.jpg', 'product10.png', 'product11.jpg', 'product12.jpg', 'product13.png', 'product14.jpg', 'product15.jpg', 'product16.jpg', 'product17.jpg', 'product18.jpg']
+        let imgnum2 = Math.ceil(Math.random()*17);
+        let imgnum3 = imgnum2+1;
+
+        document.getElementById('coup').innerHTML='<h3>HOT! TREND<br>추천광고상품<h3><br><div class=imm><label for="l"><input type="button" id="l"><i class="fa fa-angle-left" id=left ></i></label><label for="r"><input type="button" id="r"><i class="fa fa-angle-right"id=right></i></label><img id="ii" src="./1222/images3/'+prod[imgnum2]+'" alt="추천사진"></div>';
+
+        l.addEventListener(
+            'click', function(){
+                document.getElementById('ii').src="./1222/images3/'+prod[imgnum3]+'";});
+
+        
+
+        
+
+        
+
+    </script>
+    
+</body>
+</html>

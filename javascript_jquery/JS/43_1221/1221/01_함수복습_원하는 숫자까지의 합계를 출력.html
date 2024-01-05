@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>01_함수복습_원하는 숫자까지의 합계를 출력</title>
+  <style>
+    label{
+      display:inline-block;
+      width:180px;
+      font-weight:bold;
+    }
+    input{
+      height:30px;border:none;
+      background:#ccc;
+    }
+  </style>
+</head>
+<body>
+  <h2>01_함수복습_원하는 숫자까지의 합계를 출력</h2>
+  <p>사용자가 명령프롬프트를 이용하여 숫자를 입력하면 1부터 해당하는 숫자까지 합계를 출력해주는 함수를 작성하여 출력해본다.</p>
+
+  <p>
+    <label for='number'>합계를 구할 숫자입력 : </label>
+    <input type="text" id="number">
+  </p>
+  <p>
+    <label for="result">합계결과 : </label>
+    <input type="text" id="result">
+  </p>
+
+  <script>
+    //1. 변수선언
+    let n = document.getElementById('number').value;
+  </script>
+
+</body>
+</html>

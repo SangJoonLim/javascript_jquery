@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>02_자바스크립트 기초_객체(object)</title>
+    <style>
+        body {width:1000px; white-space: pre-line; margin: 0px auto;}
+        .hright {background-color: aquamarine; width: 600px; font: 600; color: coral;}
+        pre {line-height: 26px; font-weight: 700; font-size: 18px; border: 1px solid cornflowerblue; white-space: pre-line; width: 800px;
+        background-color: rgba(255,255,200,1);}
+        .span01 {font-size: 18px; background-color: rgba(0,30,20,0.8); color:chartreuse;}
+        .span02 {font-size: 18px; background-color:cornflowerblue; color:cornsilk; font-size: 21px;}
+        /* div {font-size: 19px; background-color:cornflowerblue; display: inline; color: cornsilk;} */
+        .inline{display: inline; color:#930413;}
+
+        field2{line-height: 10px;}
+    </style>
+</head>
+<body>
+    <pre>
+        <h2 class="hright">02_자바스크립트 기초_객체(object)</h2>
+        function / event / for / if ....
+        <dl>
+            <dt>객체(object)란?</dt>
+            <dd>1. <span class="span01">이름(key)</span>와 <span class="span01">값(value)</span>로 구성된 속성을 담아놓은 컨테이너이다.</dd>
+            <dd>2. 객체에 <span class="span02">변수를 선언하면 속성(property)을 사용</span>할 수 있다. <span class="span01">ex)document.getElementById('아이디명')</span></dd>
+            <dd>3. 객체에 <span class="span02">함수를 선언하면 메서드(method)를 사용</span>할 수 있다. <span class="span01">ex)document.wirte('내용');</span></dd>
+        </dl>
+
+        <h3 class="hright">1. 객체의 종류</h3>
+        내장객체 - 자바스크립트에서 미리 정해놓은 객체로 다양한 종류가 있다. 
+        <ul>
+            <li>수학객체(Math)</li>
+            <li>날짜객체(date)</li>
+            <li>배열객체(array)</li>
+            <li>문자열객체(string)</li>
+            <li>문서객체(document)</li>
+            <li>윈도우객체(window)</li>
+        </ul>
+        
+        사용자 정의 객체 - 내장객체를 제외한 사용자가 원하는 내용을 토대로 직접 객체를 선언하여 작성하는 방법
+
+        <!-- 속성값을 선택입력할수 있는 창 -->
+        <div>
+            <fieldset>
+                <legend>휴대폰 정보 입력하기</legend>
+                <p>
+                    <label for="company">제조회사 : </label>
+                    <input type="text" id="company">
+                </p>
+
+                <p>
+                    <label for="model">모델명 : </label>
+                    <input type="text" id="model">
+                </p>
+
+                <p>
+                    <label for="color">색상명 : </label>
+                    <input type="text" id="color">
+                </p>
+
+                <input type="button" value="입력한 정보 출력하기(신청하기or주문하기)" id="order_btn">
+            </fieldset>
+
+            <!-- 내용출력하기 result-->
+            <p id="result"></p>
+        </div>
+
+        //출력내용 예시 - 나의 이름은 '홍길등'이고, 나이는 '23'세이며, 키는 '175'cm 몸무게는 '70kg'입니다.
+        <div>
+                <fieldset class="field2">
+                    <legend>홍길동개인정보</legend>
+                    <p><label for="first_N">성 :</label><input type="text" maxlength="1" placeholder="성을 입력하세요" id="first_N"></p>
+    
+                    <p><label for="last_N">이름 :</label><input type="text" maxlength="4" placeholder="이름을 입력하세요" id="last_N"></p>
+    
+                    <p><label for="hei">키 :</label><input type="number" maxlength="3" placeholder="키를 입력해주세요" id="hei"></p>
+    
+                    <p><label for="wei">몸무게 :</label><input type="number" maxlength="3" placeholder="몸무게를 입력해주세요" id="wei"></p>
+    
+                    <p><label for="age">나이 :</label><input type="number" maxlength="2" placeholder="나이를 입력해주세요" id="age"></p>
+
+                    <input type="button" value="입력한 정보 출력하기(신청하기or주문하기)"
+                    id="btnbt">
+                    <input type="reset" value="입력취소" id="res_btn2">
+
+                </fieldset>
+                <!-- 내용출력하기 result-->
+            <p id="result2"></p>
+        </div>
+
+        <script>
+            //1. 사용자 정의 객체
+            let phone = new Object();
+            const btn = document.getElementById('order_btn');
+            // 붕어빵틀 : phone
+            // 속성 : 컬러, 사이즈, 가격(제원)
+            // 메서드 : on/off, 슬라이드...(기능)
+            
+            //속성
+            phone.company = '애플';
+            phone.model = 'iphone 8Plus';
+            phone.color = 'white';
+            
+            //****출력1 (고정값넣기)
+            // document.write(`
+            // <p class='inline'>나의 핸드폰 제조회사는 <span class='span02'>${phone.company}</span>이고,
+            // 모델명은 <span class='span02'>${phone.model}</span>이며,
+            // 컬러는 <span class='span02'>${phone.color}</span>이다.</p>
+            // `);
+
+            // 출력2 (입력상자에 원하는값넣기)
+            btn.addEventListener('click', function(){
+            const c = document.getElementById('company').value;
+            const m = document.getElementById('model').value;
+            const col = document.getElementById('color').value;
+
+            phone.c = c;
+            phone.m = m;
+            phone.col = col;
+
+            document.getElementById('result').innerHTML=(`
+            <p class='inline'>나의 핸드폰 제조회사는 <span class='span02'>${phone.c}</span>이고,
+            모델명은 <span class='span02'>${phone.m}</span>이며,
+            컬러는 <span class='span02'>${phone.col}</span>이다.</p>
+            `);
+            });
+
+            // 사용자 정의 객체 만들기 또다른 방법 new Object 없이
+
+            // let phone = new Object();
+            // const btn = document.getElementById('order_btn');
+
+            // btn.addEventListener('click', function(){
+            // const c = document.getElementById('company').value;
+            // const m = document.getElementById('model').value;
+            // const col = document.getElementById('color').value;
+
+            // phone.c = c;
+            // phone.m = m;
+            // phone.col = col;
+
+            // document.getElementById('result').innerHTML=(`
+            // <p class='inline'>나의 핸드폰 제조회사는 <span class='span02'>${phone.c}</span>이고,
+            // 모델명은 <span class='span02'>${phone.m}</span>이며,
+            // 컬러는 <span class='span02'>${phone.col}</span>이다.</p>
+            // `);
+            // });
+
+
+
+            
+
+            
+
+            
+        </script>
+        <script>
+            //문제. 위 두번째 객체생성 방법을 통해서 개인정보 입력양식을 만들어 사용자가 '성', '이름', '나이', '키', '몸무게'를 입력하고 '신청완료'를 누르면 객체정보가 출력되게 하기
+
+            //출력내용 예시 - 나의 이름은 '홍길등'이고, 나이는 '23'세이며, 키는 '175'cm 몸무게는 '70kg'입니다.
+            
+            // 객체 person , 속성 firstName... weight
+            // let person = {
+            //     firstName:fir,
+            //     lastName:las,
+            //     age:ag,
+            //     height:he,
+            //     weight:we
+            // }
+
+            //변수선언 
+            //클릭이벤트 밖에서 선언해야한다 안에다 선언하면 (지역변수)라서 그내에서만 쓸수가있다.
+
+            //변동값 선언
+            let fir,las,he,we,ag,btn2,res,resul; 
+            //고정값 선언
+            // const btn2,res,resul;
+
+
+            btn2 = document.getElementById('btnbt'); 
+            res = document.getElementById('res_btn2');
+
+                //정보 입력완료 버튼을 클릭시 각각 해당정보를 객체속성에 담아서 출력한다.
+            btn2.addEventListener('click', function(){
+            //텍스트박스 연결, 변경값은 let / 고정값은 const
+            
+            //변수선언 안에다선언 (지역변수)
+            fir = document.getElementById('first_N').value;
+            las = document.getElementById('last_N').value;
+            he = document.getElementById('hei').value;
+            we = document.getElementById('wei').value;
+            ag = document.getElementById('age').value;
+            
+            
+            resul = document.getElementById('result2');
+
+            // let a = new Object();
+
+            let person = {
+                firstName:fir,
+                lastName:las,
+                age:ag,
+                height:he,
+                weight:we
+            }
+            
+            
+            // person.firstName = fir;
+            // person.lastName = las;
+            // person.height = he;
+            // person.weight = we;
+            // person.age = ag;
+            
+            document.getElementById('result2').innerHTML=
+                `나의 이름은 ${person.firstName}${person.lastName}이고, 나이는 '${person.age}'세이며, 키는 '${person.height}'cm 몸무게는 '${person.weight}kg'입니다.`
+                ;
+            });
+
+            //입력취소하기 
+            res.addEventListener('click', function(){
+                document.getElementById('first_N').value="";
+                document.getElementById('last_N').value="";
+                document.getElementById('age').value="";
+                document.getElementById('hei').value="";
+                document.getElementById('wei').value="";
+                //getelementByid가 (id값) 값이 "" 아무것도없게
+                resul.innerHTML=""; 
+                // resul(출력되는곳)/.innerHTML(HTML안에)="";("":아무것도없게)
+            });
+        </script>
+    </pre>
+
+    
+    
+</body>
+</html>

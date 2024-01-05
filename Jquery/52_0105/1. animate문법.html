@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>1. animate문법</title>
+  <style>
+    .hright {
+      background-color: aquamarine;
+      width: 100%;
+      font: 600;
+      color: coral;
+    }
+
+    pre {
+      line-height: 26px;
+      font-weight: 700;
+      font-size: 18px;
+      border: 1px solid cornflowerblue;
+      white-space: pre-line;
+      width: 800px;
+      background-color: rgba(255, 255, 200, 1);
+    }
+
+    .span01 {
+      font-size: 18px;
+      background-color: rgba(0, 30, 20, 0.8);
+      color: chartreuse;
+    }
+
+    .span02 {
+      font-size: 18px;
+      background-color: #930413;
+      color: bisque;
+      font-size: 21px;
+    }
+
+    .bor1 {
+      border: 2px solid cornflowerblue;
+    }
+
+    img {
+      height: 480px;
+    }
+
+    .txt01 {
+      font-weight: bold;
+      color: #930413;
+    }
+
+    #box01 {
+      width: 100px;
+      height: 100px;
+      background: chartreuse;
+      border-radius: 50%;
+      text-align: center;
+      line-height: 100px;
+      position: relative;
+      left: 0px;
+    }
+
+    #kakao {
+      position: relative;
+      left: 15%;
+      width: 100px;
+      height: 100px;
+    }
+
+    .four {
+      padding: 0px;
+      margin: 0px;
+    }
+
+    .four>li {
+      list-style: none;
+      background: cornflowerblue;
+      position: relative;
+      left: 0px;
+      margin-bottom: 20px;
+      width: 50px;
+      height: 50px;
+      text-align: center;
+      line-height: 50px;
+    }
+
+    #bemin01, #bemin02, #bemin03, #bemin04, #bemin05{
+      width:100px; height:100px;
+    }
+
+    .bemin{
+      position:relative;
+    }
+    
+
+  </style>
+  <!--제이쿼리 라이브러리 연결하기-->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+  <!-- 제이쿼리 ui라이브러리 연결하기 -->
+  <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
+
+  <script>
+    $(document).ready(function () { //문서가로딩이끝나면 제이쿼리를 실행한다.
+
+      //1. 애니메이션 시작버튼 누르면 box01이 애니메이션 적용되어 움직이게 하기
+      $('#btn_01').click(function () {
+        $('#box01').animate({ 'left': '500px' }, 1000,
+          function () {
+            $('#box01').animate({ 'left': '0px' }, 500);
+          });
+      });
+
+      //2. 애니메이션 정지버튼 누르면 box01이 애니메이션에 적용되어 정지하기
+      $('#btn_02').click(function () {
+        $('#box01').stop();
+      });
+
+      // $('#box01').animate({'left':'500px'}, 1000, 
+      //왼쪽에서 왼쪽으로500픽셀1초간이동
+      // function(){
+      //   $('#box01').animate({'left':'0px'}, 2000);
+      //콜백 다시 왼쪽으로 돌아오기 2초동안
+      // }); 
+
+      /* 3. 자바스크립트 절대값을 활용하여 캐릭터 상,하,좌,우 움직이기 */
+      let n = 50;
+      $('#btn03').click(function () { //위로이동, 변수값 -n(-50) 변수값은''안해도되는듯
+        $('#kakao').animate({ 'top': '-=' + n }, 500);
+      });
+      /*+=&-= +a 대입연산자 a 계속더하거나 뺴라
+      += +a(50) > 50, 100, 150, 200... 
+      -= +a(50) > -50, -100, -150
+      
+       */
+      $('#btn04').click(function () { //아래로이동
+        $('#kakao').animate({ 'top': '+=' + n }, 500);
+      });
+
+      $('#btn05').click(function () { //좌로이동
+        $('#kakao').animate({ 'left': '-=' + n }, 500);
+      });
+
+      $('#btn06').click(function () { //우로이동
+        $('#kakao').animate({ 'left': '+=' + n }, 500);
+      });
+
+      /*4. box에 마우스 오버시 순차적으로 애니메이션 적용하기*/
+      let list = $('.four > li');
+      list.hover(function(){ //목록에 마우스 오버시
+
+        // list.animate({'left':'500px'},500); 
+        /* *4 list. 으로 하면 호버시 li태그 전체가 움직이지만 
+          $(this). 으로 하면 호버한 li태그 하나만 선택이된다
+        */
+        
+
+        $(this).animate({'left':'500px'},500);
+
+
+      },function(){ //마우스 아웃시 == mouseout, mouseleave
+
+        // list.animate({'left':'0px'},500); *4
+        
+
+        $(this).animate({'left':'0px'},100);
+      });
+
+      /*5. easing값을 사용하여 속도감있는 애니메이션 적용하기*/
+      $('#order').click(function(){
+        $('#bemin01').animate({'left':'1000px'},1500, 'linear'); 
+        //기본속도 일정
+        $('#bemin02').animate({'left':'1000px'},1500, 'easeOutQuint'); 
+        //기본속도 일정
+        $('#bemin03').animate({'left':'1000px'},1500, 'easeOutBounce'); 
+        //기본속도 일정
+        $('#bemin04').animate({'left':'1000px'},1500, 'easeOutElastic'); 
+        //기본속도 일정
+        $('#bemin05').animate({'left':'1000px'},1500, 'easeOutExpo'); 
+        //기본속도 일정
+
+      });
+      
+      
+    });
+  </script>
+</head>
+
+<body>
+  <pre>
+    <h3 class="hright">1. animate문법</h3>
+    <ul>
+      <li><span class="span01">$('사용자가 선택한 대상').animate({'속성':'값'},시간, 가속도, 콜백함수);</span></li>
+      <li>'속성':'값'은 css속성과 값을 말하며, '값'에는 자바스크립트 변수나 연산자를 활용할 수 있다.</li>
+      <li>시간 : 1/1000초값을 사용할 수 있으며 1초를 의미함</li>
+      <li>콜백함수 : callback function으로서 애니메이션 동작이 끝난뒤에 다음 동작을 이어서 실행하고자 할때 사용.</li>
+    </ul>
+
+    <h3 class="hright">2. animate메소드를 사용하여 박스 움직이게 하기</h3>
+    <div id="box01">원</div>
+    <input type="button" value="애니메이션 시작" id="btn_01">
+    <input type="button" value="애니메이션 종료" id="btn_02">
+
+    <h3 class="hright">3. 자바스크립트 절대값을 활용하여 캐릭터 상,하,좌,우 움직이기</h3>
+    <img src="./0105/images/KakaoTalk.gif" alt="튜브" id="kakao"> 
+    
+    <input type="button" value="위로이동" id="btn03">
+    <input type="button" value="아래이동" id="btn04">
+    <input type="button" value="좌측이동" id="btn05">
+    <input type="button" value="우측이동" id="btn06">
+    
+
+
+    <h3 class="hright">4. box에 마우스 오버시 순차적으로 애니메이션 적용하기</h3>
+    <ul class="four">
+      <li>1</li>
+      <li>2</li>
+      <li>3</li>
+      <li>4</li>
+      <li>5</li>
+    </ul>
+  
+    <h3 class="hright">5. easing값을 사용하여 속도감있는 애니메이션 적용하기</h3>
+
+    <p>참고사이트 : <a href="https://jqueryui.com/progressbar/">https://jqueryui.com/progressbar/</a>
+    <br>jquery.com사이트의 왼쪽 상단의 ui탭을 클릭하고 왼쪽 easing메뉴에서 jquery.ui 라이브러리를 찾아 연결하여 사용한다.</p>
+
+    <img src="./0105/images/easing.png" alt="속도감주기">
+    <img src="./0105/images/baemin.png" alt="배달하기" id="bemin01" class="bemin">
+    <img src="./0105/images/baemin.png" alt="배달하기" id="bemin02" class="bemin">
+    <img src="./0105/images/baemin.png" alt="배달하기" id="bemin03" class="bemin">
+    <img src="./0105/images/baemin.png" alt="배달하기" id="bemin04" class="bemin">
+    <img src="./0105/images/baemin.png" alt="배달하기" id="bemin05" class="bemin">
+
+    <input type="button" value="배달주문" id="order">
+
+    <p>적용사이트 : <a href="https://brand.naver.com/natuur">https://brand.naver.com/natuur(나뚜루)</a><br>메인배너이미지 변경을 좀더 속도감있게 줬다 처음이미지크기를 1.2정도로 키운다음 100%로 줄여서 보여지는데 그 이동에 속도감을 넣었음
+    </p>
+
+
+  </pre>
+
+</body>
+
+</html>

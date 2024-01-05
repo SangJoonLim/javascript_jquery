@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>실습예제2_스타벅스 모바일 2단내비게이션 구현하기</title>
+  <!-- css초기화 -->
+  <link href="./css/reset.css" rel="stylesheet" type="text/css">
+
+  <style>
+    h2, p{padding:10px;}
+    a{color:#333;text-decoration:none;}
+
+    .gnb{
+      width:100%;height:100%;
+      background:rgba(0,0,0,.7);
+    }
+    .gnb > ul{
+      width:400px;
+      margin:0px auto;
+    }
+    .gnb > ul > li{
+      position:relative;
+      text-indent:10px;
+      clear:right;
+      border-bottom:1px solid #fff;
+    }
+    .gnb > ul > li a{color:#fff;}
+    .gnb > ul > li > a{
+      display:block;
+      width:100%;
+      line-height:40px;
+      font-size:1rem;
+      background-color:rgb(12, 116, 60);
+    }
+    .gnb > ul > li a:hover{text-decoration:underline;}
+    i.fa-angle-down{
+      float:right;font-size:1.3rem;
+      padding:10px 8px;
+    }
+    .act{
+      transform: rotate(180deg) translateX(-10px) !important;
+      
+    }
+
+    /* 서브메뉴 서식 */
+    .sub{
+      width:100%;
+      background:#000;display:none;
+    }
+    .sub > li{}
+    .sub > li > a{
+      font-size:0.95rem;
+      line-height:36px;
+      display:block;
+    }
+  </style>
+
+  <!-- 아이콘폰트 -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+  <script>
+    $(document).ready(function(){
+
+      //1. 변수선언
+      const mnu = $('.gnb > ul > li > a'); //메인메뉴 변수
+
+      //2. 메뉴 클릭시 해당 서브 나오게 하기
+      mnu.click(function(){
+        //alert('클릭');
+        // 1. 서브메뉴 기능구현
+        // $(this).next().slideToggle();
+        // $(this).find('i').toggleClass('act');
+        //-----------------------------------------------------
+        // 2. 아코디언 메뉴
+       $('.sub').slideUp(); //모든 서브메뉴 위로접고
+        $(this).next().slideDown();//선택한 메뉴의 서브만 나오게 한다.
+        $('i').removeClass('act'); //모든 i태그에 act서식을 제거하고
+       $(this).find('i').addClass('act');  //선택한 메뉴의 자손 i태그에 act서식을 적용한다.
+      });
+    });
+  </script>
+
+  
+</head>
+<body>
+  <h2>실습예제2_스타벅스 모바일 2단내비게이션 구현하기</h2>
+  <p>2단목록을 작성하여 스타벅스 모바일 메뉴를 클릭시 서브메뉴 펼치기/접기 </p>
+
+  <nav class="gnb">
+    <ul>
+      <li><a href="#" title="메인메뉴1">메인메뉴1<i class="fas fa-angle-down"></i></a>
+        <ul class="sub">
+          <li><a href="#" title="">서브메뉴1</a></li>
+          <li><a href="#" title="">서브메뉴2</a></li>
+          <li><a href="#" title="">서브메뉴3</a></li>
+        </ul>
+      </li>
+      <li><a href="#" title="메인메뉴2">메인메뉴2<i class="fas fa-angle-down"></i></a>
+        <ul class="sub">
+          <li><a href="#" title="">서브메뉴1</a></li>
+          <li><a href="#" title="">서브메뉴2</a></li>
+          <li><a href="#" title="">서브메뉴3</a></li>
+        </ul>
+      </li>
+      <li><a href="#" title="메인메뉴3">메인메뉴3<i class="fas fa-angle-down"></i></a>
+        <ul class="sub">
+          <li><a href="#" title="">서브메뉴1</a></li>
+          <li><a href="#" title="">서브메뉴2</a></li>
+          <li><a href="#" title="">서브메뉴3</a></li>
+        </ul>
+      </li>
+    </ul>
+  </nav>
+
+  <h3>모바일 메뉴목록을 응용하여 '아코디언'메뉴 또는 '질문과 답변'목록도 개발 가능함.</h3>
+
+  <!-- <script>
+    const mnu = document.querySelectorAll('.gnb > ul > li > a');
+    const sub = document.querySelectorAll('.sub');
+
+    for(let i=0;i<mnu.length;i++){
+      mnu[i].addEventListener('click',function(){
+        //console.log(mnu[i]);
+        //console.log(i);
+        // 해당하는 콘텐츠나오게 하기
+        mnu[i].nextElementSibling.style.display='block';
+
+        for(let j=0;j<sub.length;j++){
+          console.log(j);
+          //sub[j].style.display='none';
+        }
+      });
+    }
+    
+  </script> -->
+
+</body>
+</html>
